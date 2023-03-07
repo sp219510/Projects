@@ -1,0 +1,45 @@
+For this project, we'll use a sample dataset of sales transactions, containing the following columns:
+
+transaction_id: Unique identifier for each transaction.
+customer_id: Unique identifier for each customer.
+product_id: Unique identifier for each product.
+quantity: Quantity of products sold in each transaction.
+price: Price per unit of each product.
+date: Date of each transaction.
+
+
+-> Calculating Total Revenue 
+
+SELECT SUM(quantity * price) as revenue
+FROM sales_transactions;
+
+-> Top Selling Products
+
+SELECT product_id, SUM(quantity) as total_sales
+FROM sales_transactions
+GROUP BY product_id
+ORDER BY total_sales DESC
+LIMIT 10;
+
+-> Top Customers
+
+SELECT customer_id, SUM(quantity * price) as total_spent
+FROM sales_transactions
+GROUP BY customer_id
+ORDER BY total_spent DESC
+LIMIT 10;
+
+-> Monthly Sales Trends
+
+SELECT DATE_TRUNC('month', date) as month, SUM(quantity * price) as revenue
+FROM sales_transactions
+GROUP BY month
+ORDER BY month ASC;
+
+-> Yearly Sales Trends
+
+SELECT DATE_TRUNC('year', date) as year, SUM(quantity * price) as revenue
+FROM sales_transactions
+GROUP BY year
+ORDER BY year ASC;
+
