@@ -1,4 +1,4 @@
-For this project, we'll use a sample dataset of sales transactions, containing the following columns:
+For this project we have used following columns:
 
 transaction_id: Unique identifier for each transaction.
 customer_id: Unique identifier for each customer.
